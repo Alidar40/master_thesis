@@ -1,0 +1,63 @@
+%% Преамбула TeX-файла
+
+% 1. Стиль и язык
+\documentclass[14pt, utf8x]{G7-32} % Стиль (по умолчанию будет 14pt)
+
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{setspace}
+\usepackage{adjustbox}
+
+% Остальные стандартные настройки убраны в preamble.inc.tex.
+\include{preamble.inc}
+
+% Настройки листингов.
+\include{listings.inc}
+
+% Полезные макросы листингов.
+\include{macros.inc}
+
+\begin{document}
+
+% Исправляем нумерацию страниц
+\setcounter{page}{2}
+
+% Исправляем абзацный отступ
+\setlength{\parindent}{1.25cm}
+
+\frontmatter % выключает нумерацию ВСЕГО; здесь начинаются ненумерованные главы: реферат, введение, глоссарий, сокращения и прочее.
+
+% Команды \breakingbeforechapters и \nonbreakingbeforechapters
+% управляют разрывом страницы перед главами.
+% По-умолчанию страница разрывается.
+
+% \nobreakingbeforechapters
+% \breakingbeforechapters
+
+\include{00-annotation.tex}
+
+\tableofcontents
+
+\include{01-abbrev}
+
+\include{02-intro}
+
+\mainmatter % это включает нумерацию глав и секций в документе ниже
+
+\include{10-analysis}
+\include{20-dataset}
+\include{30-experiments}
+\include{40-future}
+
+\backmatter %% Здесь заканчивается нумерованная часть документа и начинаются ссылки и
+            %% заключение
+
+\include{80-conclusion}
+
+\include{81-biblio}
+\include{82-gratitude}
+\appendix   % Тут идут приложения
+
+\include{90-appendix1}
+
+\end{document}
